@@ -32,12 +32,11 @@ class newsSpider(scrapy.Spider):
             title = info.xpath("h2[@class='home-title']/text()").extract()[0]
             date = info.xpath("div[@class='item-label']/text()").extract()[0]
             df = df.append({"title" : title,"date" : date,"link" : link},ignore_index=True)
-        df.to_csv(filename,index=False)
+        df.to_csv(filename,index=False,sep='\t')
         self.log(f'Saved file {filename}')
         try :
             next_page = response.xpath("//div[@class='blog-pager clear']/span[@id='blog-pager-older-link']/a[@class='blog-pager-older-link-mobile']/@href").extract()[0]
             if next_page is not None:
-                print(f"going to {next_page}")
                 yield scrapy.Request(next_page, callback=self.parse)
         except IndexError as e :
             print("no more pages to crawl !")
