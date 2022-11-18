@@ -33,7 +33,7 @@ class newsSpider(scrapy.Spider):
             df = pd.DataFrame(columns=["title","date","link"])
 
         for article in response.xpath("//div[@class='body-post clear']"):
-            item = self.extractObject(article)
+            item = self.extractObject(article,page_name)
             df = df.append({"title" : item["title"],"date" : item["date"],"link" : item["link"]},ignore_index=True)
             yield item
         # update csv
@@ -47,13 +47,14 @@ class newsSpider(scrapy.Spider):
         except IndexError as e :
             print("no more pages to crawl !")
 
-    def extractObject(self,article):
+    def extractObject(self,article,alertType):
         item = hackerNewsItem()
         link = article.xpath("a[@class='story-link']/@href").extract()[0]
         info = article.xpath("a/div[@class='clear home-post-box cf']/div[@class='clear home-right']")
         title = info.xpath("h2[@class='home-title']/text()").extract()[0]
         date = info.xpath("div[@class='item-label']/text()").extract()[0]
-
+        
+        item['alertType'] = alertType
         item['link'] = link
         item['title'] = title
         item['date'] = date

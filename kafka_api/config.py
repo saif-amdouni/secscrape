@@ -1,6 +1,6 @@
 # kafka setup
-kafkaIP = "192.168.43.175"
+kafkaIP = "192.168.1.12"
 kafkaPort = "9092"
 
-auto_offset_reset='latest'
-enable_auto_commit=False
+auto_offset_reset='earlist'
+enable_auto_commit= True

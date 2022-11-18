@@ -20,10 +20,6 @@ else:
 
 from kafka_api.producer import kafkaPublisher
 
-
-
-
-
 class publish2kafkaPipeline: 
     def __init__(self) -> None:
           

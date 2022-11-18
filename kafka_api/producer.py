@@ -23,7 +23,7 @@ class kafkaPublisher :
 
 if __name__ == "__main__":
     producer = kafkaPublisher()
-    for i in range(10):
+    for i in range(100000):
         print(i)
-        producer.publishDataOne({"test":i},"test-topic")
+        producer.publishDataOne({"test":i},"thehackernews")
 
