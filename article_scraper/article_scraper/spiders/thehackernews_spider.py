@@ -3,12 +3,14 @@ import pandas as pd
 import os
 import warnings
 warnings.filterwarnings('ignore')
+
 from article_scraper.items import hackerNewsItem
 
 class newsSpider(scrapy.Spider):
     def __init__(self, name=None, **kwargs):
         super().__init__(name, **kwargs)
         self.BackupFolder = "DataBackup"
+
         
         if not os.path.exists(self.BackupFolder):
             os.makedirs(self.BackupFolder)

@@ -29,6 +29,7 @@ class publish2kafkaPipeline:
         topic = spider.name
         try : 
             itemData = {}
+            itemData["alertType"] = adapter.get("alertType")
             itemData["link"] = adapter.get("link")
             itemData["title"] = adapter.get("title")
             itemData["date"] = adapter.get("date")

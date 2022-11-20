@@ -20,7 +20,7 @@ class kafkaListener :
         try :
             for message in self.consumer:
                 val = message.value
-                messages.append(str(val))
+                messages.append(val)
                 if len(messages) >= buffersize :
                     print(f"buffer full on topic {self.topic}")
                     bufferState = True
