@@ -1,5 +1,5 @@
 # kafka setup
-kafkaIP = "192.168.1.12"
+kafkaIP = "192.168.1.15"
 kafkaPort = "9092"
 
 auto_offset_reset='earlist'

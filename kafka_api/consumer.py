@@ -12,7 +12,8 @@ class kafkaListener :
                                     enable_auto_commit= enable_auto_commit,
                                     value_deserializer=self.deserializer,
                                     consumer_timeout_ms = 1000,
-                                    group_id = "groupe 1" )
+                                    group_id = "groupe 1" 
+                                    )
     def startListening(self, buffersize = 50):
         print(f"listening to {self.topic} ...")
         messages = []
@@ -37,7 +38,7 @@ class kafkaListener :
         return loads(x.decode('utf-8'))
 
 if __name__ == "__main__":
-    listener = kafkaListener(topic = "thehackernews")
+    listener = kafkaListener(topic = "securityweek")
     listener.startListening()
 
 

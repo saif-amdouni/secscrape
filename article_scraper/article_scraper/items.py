@@ -11,3 +11,8 @@ class hackerNewsItem(scrapy.Item):
     date = scrapy.Field()
     title= scrapy.Field()
 
+class securityweekItem(scrapy.Item):
+    alertType = scrapy.Field()
+    link = scrapy.Field()
+    author = scrapy.Field()
+    title= scrapy.Field()

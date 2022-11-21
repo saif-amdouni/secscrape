@@ -29,10 +29,9 @@ class publish2kafkaPipeline:
         topic = spider.name
         try : 
             itemData = {}
-            itemData["alertType"] = adapter.get("alertType")
-            itemData["link"] = adapter.get("link")
-            itemData["title"] = adapter.get("title")
-            itemData["date"] = adapter.get("date")
+            
+            for key in adapter.field_names():
+                itemData[key] = adapter.get(key)
         except Exception as e:
             raise DropItem(f"Missing data in {item}")
 
@@ -43,6 +42,9 @@ class publish2kafkaPipeline:
             raise DropItem(f"can't publish data to topic!")
 
         
+
+        
+
 
 class ArticleScraperPipeline:
     def process_item(self, item, spider):
